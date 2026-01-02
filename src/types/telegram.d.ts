@@ -8,6 +8,7 @@ declare global {
         initDataUnsafe: any;
         ready: () => void;
         expand: () => void;
+        requestFullscreen?: () => void;
         close: () => void;
         sendData: (data: string) => void;
       };

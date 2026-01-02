@@ -11,6 +11,7 @@ function App() {
   useEffect(() => {
     tg?.ready();
     tg?.expand();
+    tg?.requestFullscreen?.();
   }, [tg]);
 
   const handleSelect = (nextRole: Role) => {

@@ -12,6 +12,16 @@ function App() {
     tg?.ready();
     tg?.expand();
     tg?.requestFullscreen?.();
+
+    const applyInsets = () => {
+      const safeTop = tg?.contentSafeAreaInset?.top ?? tg?.safeAreaInset?.top ?? 0;
+      document.documentElement.style.setProperty("--tg-safe-top", `${safeTop}px`);
+    };
+
+    applyInsets();
+    tg?.onEvent?.("viewportChanged", applyInsets);
+
+    return () => tg?.offEvent?.("viewportChanged", applyInsets);
   }, [tg]);
 
   const handleSelect = (nextRole: Role) => {
@@ -26,11 +36,6 @@ function App() {
           <span className="brand">KIVEN</span>
           <span className="hero-pill">beta 0.9</span>
         </div>
-        <h1>
-          Выберите роль
-          <br />
-          в Kiven
-        </h1>
       </header>
 
       <section className="choice-grid" aria-label="Выбор роли">
@@ -93,22 +98,25 @@ function App() {
         <nav className="bottom-nav" aria-label="Основная навигация">
           <button className="nav-item active" type="button">
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M3.5 11.5 12 5l8.5 6.5v7.5a1 1 0 0 1-1 1h-5.3v-6.2h-3.9v6.2H4.5a1 1 0 0 1-1-1z" />
+              <rect x="4" y="3.5" width="16" height="17" rx="3" />
+              <path d="M8 8h8" />
+              <path d="M8 12h8" />
+              <path d="M8 15.5h5" />
             </svg>
             <span>Заявки</span>
           </button>
           <button className="nav-item" type="button">
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 7.5A4.5 4.5 0 0 1 8.5 3h7A4.5 4.5 0 0 1 20 7.5v4.8A4.5 4.5 0 0 1 15.5 17H9l-5 4v-4a4.5 4.5 0 0 1 0-9z" />
-              <rect x="7.5" y="8" width="9" height="1.8" rx="0.9" />
-              <rect x="7.5" y="11" width="6.5" height="1.8" rx="0.9" />
+              <path d="M5 7.5A4.5 4.5 0 0 1 9.5 3h5A4.5 4.5 0 0 1 19 7.5v3a4.5 4.5 0 0 1-4.5 4.5H9l-4 4v-4A4.5 4.5 0 0 1 5 7.5z" />
+              <path d="M8.5 8.5h7" />
+              <path d="M8.5 11.5h4.5" />
             </svg>
             <span>Чаты</span>
           </button>
           <button className="nav-item" type="button">
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="8.5" r="3.8" />
-              <path d="M4.4 20a7.6 7.6 0 0 1 15.2 0z" />
+              <circle cx="12" cy="8" r="3.5" />
+              <path d="M4 20c1.6-4 5.6-6 8-6s6.4 2 8 6" />
             </svg>
             <span>Профиль</span>
           </button>

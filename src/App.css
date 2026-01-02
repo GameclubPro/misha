@@ -10,8 +10,9 @@
 .screen {
   width: min(420px, 100%);
   min-height: 100svh;
-  padding: clamp(28px, 7vh, 54px) clamp(20px, 5vw, 32px)
+  padding: clamp(24px, 6vh, 46px) clamp(20px, 5vw, 32px)
     clamp(16px, 4vh, 22px);
+  padding-top: calc(clamp(24px, 6vh, 46px) + var(--tg-safe-top, 0px));
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -65,11 +66,17 @@
 
 .brand {
   font-family: var(--font-title);
-  font-weight: 600;
-  letter-spacing: 0.28em;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  font-size: 1.5rem;
+  line-height: 1;
   color: var(--accent);
-  font-size: 0.9rem;
   text-transform: uppercase;
+  background: linear-gradient(90deg, #ffb86c 0%, #ff7a00 55%, #ffd7aa 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 8px 18px rgba(247, 138, 30, 0.22);
 }
 
 .hero-pill {
@@ -80,15 +87,6 @@
   font-size: 0.62rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-}
-
-.hero h1 {
-  margin: 14px 0 6px;
-  font-family: var(--font-title);
-  font-weight: 600;
-  font-size: clamp(26px, 5.6vw, 34px);
-  line-height: 1.16;
-  letter-spacing: 0.02em;
 }
 
 .choice-grid {
@@ -276,7 +274,11 @@
 .nav-item svg {
   width: 20px;
   height: 20px;
-  fill: currentColor;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .nav-item.active {
@@ -297,11 +299,12 @@
 
 @media (max-width: 360px) {
   .screen {
-    padding: 24px 16px 18px;
+    padding: 20px 16px 16px;
+    padding-top: calc(20px + var(--tg-safe-top, 0px));
   }
 
-  .hero h1 {
-    font-size: 24px;
+  .brand {
+    font-size: 1.3rem;
   }
 
   .choice-card {

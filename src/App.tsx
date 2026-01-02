@@ -29,70 +29,251 @@ function App() {
     tg?.sendData(JSON.stringify({ action: "role", role: nextRole, ts: Date.now() }));
   };
 
+  const isCustomer = role === "customer";
+
   return (
-    <div className="screen">
-      <header className="hero">
-        <div className="hero-top">
-          <span className="brand">KIVEN</span>
-          <span className="hero-pill">beta 0.9</span>
-        </div>
-      </header>
+    <div className="screen" data-screen={isCustomer ? "customer" : "select"}>
+      {isCustomer ? (
+        <>
+          <header className="customer-hero">
+            <span className="brand brand-center">KIVEN</span>
+            <div className="customer-copy">
+              <h1>Здравствуйте!</h1>
+              <p>Что вам нужно сделать?</p>
+            </div>
+            <div className="search-card" role="search">
+              <span className="search-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="11" cy="11" r="6.5" />
+                  <path d="M16 16l4.2 4.2" />
+                </svg>
+              </span>
+              <input
+                type="text"
+                placeholder="Например: электрик, уборка, репетитор..."
+                aria-label="Поиск услуг"
+              />
+              <button className="filter-btn" type="button" aria-label="Фильтры">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 6h16l-6 7v4l-4 1v-5z" />
+                </svg>
+              </button>
+            </div>
+          </header>
 
-      <section className="choice-grid" aria-label="Выбор роли">
-        <button
-          className="choice-card"
-          data-tone="accent"
-          type="button"
-          aria-pressed={role === "customer"}
-          onClick={() => handleSelect("customer")}
-        >
-          <div className="choice-top">
-            <span className="choice-icon" aria-hidden="true">
-              <svg viewBox="0 0 64 64">
-                <path d="M22 16l10-6 10 6-10 6z" />
-                <path d="M22 16v10l10 6V22z" opacity="0.9" />
-                <path d="M42 16v10l-10 6V22z" opacity="0.7" />
-                <path
-                  d="M16 40c0-3.2 2.6-5.8 5.8-5.8H42c3 0 5.5 2.4 5.5 5.5V46H16z"
-                  opacity="0.9"
-                />
-                <rect x="14" y="34" width="6" height="12" rx="2" opacity="0.9" />
-                <path d="M44 35l8-4 4 3v7h-12z" opacity="0.6" />
-                <path d="M48 12l2.4-4 2.4 4-4.8-2z" opacity="0.8" />
-              </svg>
-            </span>
-            <span className="choice-tag">Контроль</span>
-          </div>
-          <span className="choice-title">Я заказчик</span>
-          <span className="choice-desc">Создавайте заявки и выбирайте лучших исполнителей.</span>
-          <span className="choice-cta">Выбрать роль</span>
-        </button>
+          <section className="customer-section" aria-label="Популярные услуги">
+            <h2 className="section-title">Популярное сегодня</h2>
+            <div className="popular-grid">
+              <button className="popular-card" data-tone="dark" type="button">
+                <span className="popular-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M13 2 4 13h6l-1 9 11-13h-6z" />
+                  </svg>
+                </span>
+                <span>Электрика</span>
+              </button>
+              <button className="popular-card" data-tone="accent" type="button">
+                <span className="popular-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M6 10h6l-2 10 8-12h-6l2-6z" />
+                  </svg>
+                </span>
+                <span>Сантехника</span>
+              </button>
+              <button className="popular-card" data-tone="charcoal" type="button">
+                <span className="popular-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="8" cy="7" r="3" />
+                    <path d="M3 20c0-4 3-6 6-6s6 2 6 6" />
+                    <path d="M16 12l5 5" />
+                  </svg>
+                </span>
+                <span>Уборка и клининг</span>
+              </button>
+              <button className="popular-card" data-tone="sun" type="button">
+                <span className="popular-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M4 7h10l2 3h4v6h-3" />
+                    <rect x="3" y="10" width="9" height="6" rx="1.5" />
+                    <circle cx="7" cy="17" r="2" />
+                    <circle cx="16" cy="17" r="2" />
+                  </svg>
+                </span>
+                <span>Грузчики</span>
+              </button>
+            </div>
+          </section>
 
-        <button
-          className="choice-card"
-          data-tone="neutral"
-          type="button"
-          aria-pressed={role === "executor"}
-          onClick={() => handleSelect("executor")}
-        >
-          <div className="choice-top">
-            <span className="choice-icon" aria-hidden="true">
-              <svg viewBox="0 0 64 64">
-                <circle cx="32" cy="26" r="6" />
-                <path d="M16 30c0-8.5 7-15.5 16-15.5S48 21.5 48 30v4.5H16z" opacity="0.9" />
-                <rect x="18" y="34" width="28" height="7" rx="3.5" opacity="0.9" />
-                <rect x="30" y="14" width="4" height="9" rx="2" opacity="0.85" />
-                <path d="M22 44h20v10H22z" opacity="0.8" />
-                <path d="M24 44l8 6 8-6" opacity="0.55" />
-              </svg>
-            </span>
-            <span className="choice-tag">Доход</span>
+          <section className="customer-section" aria-label="Категории">
+            <h2 className="section-title">Категории</h2>
+            <div className="category-grid">
+              <button className="category-card" type="button">
+                <span className="category-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M3 12l9-7 9 7" />
+                    <path d="M5 10v9h14v-9" />
+                    <path d="M9 19v-6h6v6" />
+                  </svg>
+                </span>
+                <span>Дом и ремонт</span>
+                <span className="category-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M9 6l6 6-6 6" />
+                  </svg>
+                </span>
+              </button>
+              <button className="category-card" type="button">
+                <span className="category-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <rect x="3" y="11" width="18" height="8" rx="2" />
+                    <path d="M6 11V8a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v3" />
+                    <path d="M8 19v-3h8v3" />
+                  </svg>
+                </span>
+                <span>Мебель и интерьер</span>
+                <span className="category-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M9 6l6 6-6 6" />
+                  </svg>
+                </span>
+              </button>
+              <button className="category-card" type="button">
+                <span className="category-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <rect x="4" y="6" width="16" height="12" rx="2" />
+                    <path d="M9 18v2h6v-2" />
+                    <path d="M8 9h8" />
+                  </svg>
+                </span>
+                <span>Техника и гаджеты</span>
+                <span className="category-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M9 6l6 6-6 6" />
+                  </svg>
+                </span>
+              </button>
+              <button className="category-card" type="button">
+                <span className="category-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M5 14l2-6h8l2 6" />
+                    <rect x="3" y="12" width="18" height="6" rx="2" />
+                    <circle cx="8" cy="18" r="1.6" />
+                    <circle cx="16" cy="18" r="1.6" />
+                  </svg>
+                </span>
+                <span>Автоуслуги</span>
+                <span className="category-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M9 6l6 6-6 6" />
+                  </svg>
+                </span>
+              </button>
+              <button className="category-card" type="button">
+                <span className="category-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="8" cy="7" r="3" />
+                    <path d="M3 20c0-4 3-6 6-6s6 2 6 6" />
+                    <path d="M16 8h5" />
+                    <path d="M16 12h5" />
+                  </svg>
+                </span>
+                <span>Курьеры</span>
+                <span className="category-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M9 6l6 6-6 6" />
+                  </svg>
+                </span>
+              </button>
+              <button className="category-card" type="button">
+                <span className="category-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M4 7h10l4 4v8H4z" />
+                    <path d="M14 7v4h4" />
+                    <path d="M7 14h8" />
+                  </svg>
+                </span>
+                <span>Доставка</span>
+                <span className="category-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M9 6l6 6-6 6" />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </section>
+
+          <div className="cta-wrap">
+            <button className="cta-primary" type="button">
+              Создать заявку
+            </button>
           </div>
-          <span className="choice-title">Я исполнитель</span>
-          <span className="choice-desc">Находите заказы, работайте и получайте оплату.</span>
-          <span className="choice-cta">Выбрать роль</span>
-        </button>
-      </section>
+        </>
+      ) : (
+        <>
+          <header className="hero">
+            <div className="hero-top">
+              <span className="brand">KIVEN</span>
+              <span className="hero-pill">beta 0.9</span>
+            </div>
+          </header>
+
+          <section className="choice-grid" aria-label="Выбор роли">
+            <button
+              className="choice-card"
+              data-tone="accent"
+              type="button"
+              aria-pressed={role === "customer"}
+              onClick={() => handleSelect("customer")}
+            >
+              <div className="choice-top">
+                <span className="choice-icon" aria-hidden="true">
+                  <svg viewBox="0 0 64 64">
+                    <path d="M22 16l10-6 10 6-10 6z" />
+                    <path d="M22 16v10l10 6V22z" opacity="0.9" />
+                    <path d="M42 16v10l-10 6V22z" opacity="0.7" />
+                    <path
+                      d="M16 40c0-3.2 2.6-5.8 5.8-5.8H42c3 0 5.5 2.4 5.5 5.5V46H16z"
+                      opacity="0.9"
+                    />
+                    <rect x="14" y="34" width="6" height="12" rx="2" opacity="0.9" />
+                    <path d="M44 35l8-4 4 3v7h-12z" opacity="0.6" />
+                    <path d="M48 12l2.4-4 2.4 4-4.8-2z" opacity="0.8" />
+                  </svg>
+                </span>
+                <span className="choice-tag">Контроль</span>
+              </div>
+              <span className="choice-title">Я заказчик</span>
+              <span className="choice-desc">Создавайте заявки и выбирайте лучших исполнителей.</span>
+              <span className="choice-cta">Выбрать роль</span>
+            </button>
+
+            <button
+              className="choice-card"
+              data-tone="neutral"
+              type="button"
+              aria-pressed={role === "executor"}
+              onClick={() => handleSelect("executor")}
+            >
+              <div className="choice-top">
+                <span className="choice-icon" aria-hidden="true">
+                  <svg viewBox="0 0 64 64">
+                    <circle cx="32" cy="26" r="6" />
+                    <path d="M16 30c0-8.5 7-15.5 16-15.5S48 21.5 48 30v4.5H16z" opacity="0.9" />
+                    <rect x="18" y="34" width="28" height="7" rx="3.5" opacity="0.9" />
+                    <rect x="30" y="14" width="4" height="9" rx="2" opacity="0.85" />
+                    <path d="M22 44h20v10H22z" opacity="0.8" />
+                    <path d="M24 44l8 6 8-6" opacity="0.55" />
+                  </svg>
+                </span>
+                <span className="choice-tag">Доход</span>
+              </div>
+              <span className="choice-title">Я исполнитель</span>
+              <span className="choice-desc">Находите заказы, работайте и получайте оплату.</span>
+              <span className="choice-cta">Выбрать роль</span>
+            </button>
+          </section>
+        </>
+      )}
 
       <footer className="footer">
         <nav className="bottom-nav" aria-label="Основная навигация">

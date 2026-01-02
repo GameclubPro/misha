@@ -30,6 +30,7 @@ function App() {
   };
 
   const isCustomer = role === "customer";
+  const isExecutor = role === "executor";
 
   return (
     <div className="screen" data-screen={isCustomer ? "customer" : "select"}>
@@ -222,7 +223,7 @@ function App() {
               className="choice-card"
               data-tone="accent"
               type="button"
-              aria-pressed={role === "customer"}
+              aria-pressed={isCustomer}
               onClick={() => handleSelect("customer")}
             >
               <div className="choice-top">
@@ -251,7 +252,7 @@ function App() {
               className="choice-card"
               data-tone="neutral"
               type="button"
-              aria-pressed={role === "executor"}
+              aria-pressed={isExecutor}
               onClick={() => handleSelect("executor")}
             >
               <div className="choice-top">

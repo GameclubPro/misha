@@ -31,12 +31,6 @@ function App() {
           <br />
           в Kiven
         </h1>
-        <p className="hero-sub">Интерфейс и поток задач подстроятся под вас.</p>
-        <div className="hero-tags" aria-label="Преимущества">
-          <span>Быстрый старт</span>
-          <span>Безопасные сделки</span>
-          <span>Рейтинг и отзывы</span>
-        </div>
       </header>
 
       <section className="choice-grid" aria-label="Выбор роли">
@@ -96,7 +90,6 @@ function App() {
       </section>
 
       <footer className="footer">
-        <p className="hint">Можно сменить позже</p>
         <nav className="bottom-nav" aria-label="Основная навигация">
           <button className="nav-item active" type="button">
             <svg viewBox="0 0 24 24" aria-hidden="true">

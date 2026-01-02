@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 
+type Role = "customer" | "executor";
+
 function App() {
-  const [count, setCount] = useState(0);
+  const [role, setRole] = useState<Role | null>(null);
 
   const tg = useMemo(() => window.Telegram?.WebApp, []);
 
@@ -13,37 +13,82 @@ function App() {
     tg?.expand();
   }, [tg]);
 
-  const sendToBot = () => {
-    tg?.sendData(JSON.stringify({ action: "count", value: count, ts: Date.now() }));
+  const handleSelect = (nextRole: Role) => {
+    setRole(nextRole);
+    tg?.sendData(JSON.stringify({ action: "role", role: nextRole, ts: Date.now() }));
   };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
+    <div className="screen">
+      <header className="hero">
+        <span className="brand">KIVEN</span>
+        <h1>
+          Для чего вам
+          <br />
+          Kiven?
+        </h1>
+      </header>
 
-      <h1>Vite + React (Telegram Mini App)</h1>
+      <section className="choice-grid" aria-label="Выбор роли">
+        <button
+          className="choice-card"
+          type="button"
+          aria-pressed={role === "customer"}
+          onClick={() => handleSelect("customer")}
+        >
+          <span className="choice-icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64">
+              <rect x="10" y="12" width="24" height="24" rx="5" opacity="0.9" />
+              <rect x="30" y="20" width="24" height="24" rx="5" opacity="0.55" />
+              <path d="M10 40h30c4.4 0 8 3.6 8 8v8H10z" opacity="0.8" />
+              <path d="M42 42l12-7 6 4v9H42z" opacity="0.45" />
+            </svg>
+          </span>
+          <span className="choice-label">Я заказчик</span>
+        </button>
 
-      <div className="card">
-        <button onClick={() => setCount((c) => c + 1)}>count is {count}</button>
+        <button
+          className="choice-card"
+          type="button"
+          aria-pressed={role === "executor"}
+          onClick={() => handleSelect("executor")}
+        >
+          <span className="choice-icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64">
+              <path d="M14 36c0-10 8-18 18-18h0c10 0 18 8 18 18v6H14z" opacity="0.8" />
+              <rect x="12" y="42" width="40" height="8" rx="4" opacity="0.85" />
+              <rect x="30" y="16" width="4" height="10" rx="2" opacity="0.8" />
+            </svg>
+          </span>
+          <span className="choice-label">Я исполнитель</span>
+        </button>
+      </section>
 
-        <div style={{ marginTop: 12 }}>
-          <button onClick={sendToBot} disabled={!tg}>
-            Отправить боту через sendData
+      <footer className="footer">
+        <p className="hint">Можно сменить позже</p>
+        <nav className="bottom-nav" aria-label="Основная навигация">
+          <button className="nav-item active" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 11.5 12 5l8 6.5v7.5a1 1 0 0 1-1 1h-5.5v-6h-3v6H5a1 1 0 0 1-1-1z" />
+            </svg>
+            <span>Заявки</span>
           </button>
-        </div>
-
-        <p style={{ marginTop: 12, opacity: 0.8 }}>
-          Telegram: {tg ? "yes" : "no (открой внутри Telegram)"}
-        </p>
-      </div>
-    </>
+          <button className="nav-item" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 7a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v5a4 4 0 0 1-4 4H9l-5 4v-4a4 4 0 0 1-4-4z" />
+            </svg>
+            <span>Чаты</span>
+          </button>
+          <button className="nav-item" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 12.5a4.25 4.25 0 1 0-4.25-4.25A4.25 4.25 0 0 0 12 12.5z" />
+              <path d="M4.5 20a7.5 7.5 0 0 1 15 0z" />
+            </svg>
+            <span>Профиль</span>
+          </button>
+        </nav>
+      </footer>
+    </div>
   );
 }
 

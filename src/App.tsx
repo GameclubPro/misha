@@ -32,16 +32,19 @@ function App() {
       <section className="choice-grid" aria-label="Выбор роли">
         <button
           className="choice-card"
+          data-tone="accent"
           type="button"
           aria-pressed={role === "customer"}
           onClick={() => handleSelect("customer")}
         >
           <span className="choice-icon" aria-hidden="true">
             <svg viewBox="0 0 64 64">
-              <rect x="10" y="12" width="24" height="24" rx="5" opacity="0.9" />
-              <rect x="30" y="20" width="24" height="24" rx="5" opacity="0.55" />
-              <path d="M10 40h30c4.4 0 8 3.6 8 8v8H10z" opacity="0.8" />
-              <path d="M42 42l12-7 6 4v9H42z" opacity="0.45" />
+              <path d="M14 20l12-7 12 7-12 7z" />
+              <path d="M14 20v14l12 7v-14z" opacity="0.9" />
+              <path d="M38 20v14l-12 7v-14z" opacity="0.7" />
+              <rect x="40" y="16" width="10" height="10" rx="2" opacity="0.6" />
+              <path d="M8 40c0-3.5 2.8-6.3 6.3-6.3h22.7c3.2 0 5.8 2.6 5.8 5.8v8.5H8z" opacity="0.85" />
+              <path d="M42 36l10-5 4 3v8H42z" opacity="0.55" />
             </svg>
           </span>
           <span className="choice-label">Я заказчик</span>
@@ -49,15 +52,18 @@ function App() {
 
         <button
           className="choice-card"
+          data-tone="neutral"
           type="button"
           aria-pressed={role === "executor"}
           onClick={() => handleSelect("executor")}
         >
           <span className="choice-icon" aria-hidden="true">
             <svg viewBox="0 0 64 64">
-              <path d="M14 36c0-10 8-18 18-18h0c10 0 18 8 18 18v6H14z" opacity="0.8" />
-              <rect x="12" y="42" width="40" height="8" rx="4" opacity="0.85" />
-              <rect x="30" y="16" width="4" height="10" rx="2" opacity="0.8" />
+              <path d="M14 30c0-9.5 7.5-17 18-17s18 7.5 18 17v6H14z" opacity="0.9" />
+              <rect x="16" y="34" width="32" height="8" rx="4" opacity="0.9" />
+              <rect x="30" y="14" width="4" height="10" rx="2" opacity="0.85" />
+              <path d="M20 44h24v10H20z" opacity="0.75" />
+              <path d="M24 44l8 6 8-6" opacity="0.55" />
             </svg>
           </span>
           <span className="choice-label">Я исполнитель</span>

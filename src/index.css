@@ -1,9 +1,9 @@
 :root {
-  --bg: #f7efe6;
-  --accent: #d7a258;
-  --accent-strong: #c58b3a;
-  --text: #3a2a22;
-  --muted: #a18874;
+  --bg: #f6efe6;
+  --accent: #d6a05a;
+  --accent-strong: #c0873a;
+  --text: #3b2e25;
+  --muted: #a39282;
 
   font-family: "Manrope", sans-serif;
   line-height: 1.4;

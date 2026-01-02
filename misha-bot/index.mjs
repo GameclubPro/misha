@@ -29,6 +29,7 @@ bot.catch((err) => {
 });
 
 bot.command("start", async (ctx) => {
+  console.log("start", { from: ctx.from?.id });
   await ctx.reply("Жми кнопку и откроется Mini App:", {
     reply_markup: {
       keyboard: [[{ text: "🚀 Открыть Mini App", web_app: { url: WEBAPP_URL } }]],
@@ -39,6 +40,7 @@ bot.command("start", async (ctx) => {
 
 bot.on("message:web_app_data", async (ctx) => {
   const data = ctx.message.web_app_data?.data;
+  console.log("web_app_data", { from: ctx.from?.id, data });
   await ctx.reply(`Получил из Mini App: ${data}`);
 });
 

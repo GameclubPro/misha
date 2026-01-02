@@ -1,16 +1,18 @@
 :root {
-  --bg: #f3d6ba;
-  --accent: #f29a2e;
-  --accent-strong: #dd841e;
-  --text: #3a2a20;
-  --muted: #a99584;
-  --font-body: "Montserrat", sans-serif;
-  --font-title: "Playfair Display", serif;
+  --bg: #0b0a09;
+  --surface: #f9f6f0;
+  --surface-strong: #ffffff;
+  --ink: #1a1512;
+  --muted: #7e736a;
+  --accent: #f78a1e;
+  --accent-strong: #ff7a00;
+  --font-body: "Manrope", sans-serif;
+  --font-title: "Unbounded", sans-serif;
 
   font-family: var(--font-body);
   line-height: 1.4;
   font-weight: 400;
-  color: var(--text);
+  color: var(--ink);
   background-color: var(--bg);
 
   font-synthesis: none;
@@ -39,4 +41,5 @@ svg {
 button {
   font: inherit;
   color: inherit;
+  cursor: pointer;
 }

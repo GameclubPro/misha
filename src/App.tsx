@@ -22,12 +22,21 @@ function App() {
   return (
     <div className="screen">
       <header className="hero">
-        <span className="brand">KIVEN</span>
+        <div className="hero-top">
+          <span className="brand">KIVEN</span>
+          <span className="hero-pill">beta 0.9</span>
+        </div>
         <h1>
-          Для чего вам
+          Выберите роль
           <br />
-          Kiven?
+          в Kiven
         </h1>
+        <p className="hero-sub">Интерфейс и поток задач подстроятся под вас.</p>
+        <div className="hero-tags" aria-label="Преимущества">
+          <span>Быстрый старт</span>
+          <span>Безопасные сделки</span>
+          <span>Рейтинг и отзывы</span>
+        </div>
       </header>
 
       <section className="choice-grid" aria-label="Выбор роли">
@@ -38,18 +47,26 @@ function App() {
           aria-pressed={role === "customer"}
           onClick={() => handleSelect("customer")}
         >
-          <span className="choice-icon" aria-hidden="true">
-            <svg viewBox="0 0 64 64">
-              <path d="M22 16l10-6 10 6-10 6z" />
-              <path d="M22 16v10l10 6V22z" opacity="0.9" />
-              <path d="M42 16v10l-10 6V22z" opacity="0.7" />
-              <path d="M16 40c0-3.2 2.6-5.8 5.8-5.8H42c3 0 5.5 2.4 5.5 5.5V46H16z" opacity="0.9" />
-              <rect x="14" y="34" width="6" height="12" rx="2" opacity="0.9" />
-              <path d="M44 35l8-4 4 3v7h-12z" opacity="0.6" />
-              <path d="M48 12l2.4-4 2.4 4-4.8-2z" opacity="0.8" />
-            </svg>
-          </span>
-          <span className="choice-label">Я заказчик</span>
+          <div className="choice-top">
+            <span className="choice-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64">
+                <path d="M22 16l10-6 10 6-10 6z" />
+                <path d="M22 16v10l10 6V22z" opacity="0.9" />
+                <path d="M42 16v10l-10 6V22z" opacity="0.7" />
+                <path
+                  d="M16 40c0-3.2 2.6-5.8 5.8-5.8H42c3 0 5.5 2.4 5.5 5.5V46H16z"
+                  opacity="0.9"
+                />
+                <rect x="14" y="34" width="6" height="12" rx="2" opacity="0.9" />
+                <path d="M44 35l8-4 4 3v7h-12z" opacity="0.6" />
+                <path d="M48 12l2.4-4 2.4 4-4.8-2z" opacity="0.8" />
+              </svg>
+            </span>
+            <span className="choice-tag">Контроль</span>
+          </div>
+          <span className="choice-title">Я заказчик</span>
+          <span className="choice-desc">Создавайте заявки и выбирайте лучших исполнителей.</span>
+          <span className="choice-cta">Выбрать роль</span>
         </button>
 
         <button
@@ -59,17 +76,22 @@ function App() {
           aria-pressed={role === "executor"}
           onClick={() => handleSelect("executor")}
         >
-          <span className="choice-icon" aria-hidden="true">
-            <svg viewBox="0 0 64 64">
-              <circle cx="32" cy="26" r="6" />
-              <path d="M16 30c0-8.5 7-15.5 16-15.5S48 21.5 48 30v4.5H16z" opacity="0.9" />
-              <rect x="18" y="34" width="28" height="7" rx="3.5" opacity="0.9" />
-              <rect x="30" y="14" width="4" height="9" rx="2" opacity="0.85" />
-              <path d="M22 44h20v10H22z" opacity="0.8" />
-              <path d="M24 44l8 6 8-6" opacity="0.55" />
-            </svg>
-          </span>
-          <span className="choice-label">Я исполнитель</span>
+          <div className="choice-top">
+            <span className="choice-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64">
+                <circle cx="32" cy="26" r="6" />
+                <path d="M16 30c0-8.5 7-15.5 16-15.5S48 21.5 48 30v4.5H16z" opacity="0.9" />
+                <rect x="18" y="34" width="28" height="7" rx="3.5" opacity="0.9" />
+                <rect x="30" y="14" width="4" height="9" rx="2" opacity="0.85" />
+                <path d="M22 44h20v10H22z" opacity="0.8" />
+                <path d="M24 44l8 6 8-6" opacity="0.55" />
+              </svg>
+            </span>
+            <span className="choice-tag">Доход</span>
+          </div>
+          <span className="choice-title">Я исполнитель</span>
+          <span className="choice-desc">Находите заказы, работайте и получайте оплату.</span>
+          <span className="choice-cta">Выбрать роль</span>
         </button>
       </section>
 

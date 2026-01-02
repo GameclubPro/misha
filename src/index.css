@@ -2,12 +2,12 @@
   --bg: #0b0a09;
   --surface: rgba(18, 14, 12, 0.72);
   --surface-strong: rgba(28, 20, 16, 0.88);
-  --ink: #f7efe7;
-  --muted: #b4a69a;
+  --ink: #fff7f1;
+  --muted: #e2d3c5;
   --accent: #ff8a2b;
   --accent-strong: #ff7a00;
   --accent-warm: #ffd2a1;
-  --stroke: rgba(255, 255, 255, 0.14);
+  --stroke: rgba(255, 255, 255, 0.18);
   --tg-safe-top: env(safe-area-inset-top, 0px);
   --font-body: "Golos Text", "Manrope", sans-serif;
   --font-title: "Golos Display", "Golos Text", sans-serif;

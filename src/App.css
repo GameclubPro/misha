@@ -8,10 +8,10 @@
 }
 
 .screen {
-  width: min(420px, 100%);
+  width: min(390px, 100%);
   min-height: 100vh;
-  padding: clamp(52px, 11vh, 78px) clamp(24px, 6vw, 36px)
-    clamp(22px, 7vh, 30px);
+  padding: clamp(62px, 12vh, 82px) clamp(24px, 6vw, 36px)
+    clamp(20px, 7vh, 30px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,10 +19,10 @@
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(120% 120% at 50% -12%, #fff8f2 0%, #f7ddc4 52%, #f1c89f 100%),
-    radial-gradient(220px 200px at 12% 24%, rgba(236, 167, 96, 0.25), transparent 70%),
-    radial-gradient(200px 200px at 86% 30%, rgba(236, 167, 96, 0.2), transparent 72%),
-    radial-gradient(280px 220px at 50% 90%, rgba(236, 167, 96, 0.18), transparent 72%);
+    radial-gradient(120% 120% at 50% -12%, #fff8f2 0%, #f7e0c8 52%, #f2cba2 100%),
+    radial-gradient(240px 200px at 12% 26%, rgba(238, 168, 96, 0.24), transparent 72%),
+    radial-gradient(210px 210px at 86% 30%, rgba(238, 168, 96, 0.22), transparent 74%),
+    radial-gradient(320px 240px at 50% 90%, rgba(238, 168, 96, 0.18), transparent 75%);
 }
 
 .screen::before {
@@ -30,11 +30,12 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(60px 60px at 18% 72%, rgba(255, 255, 255, 0.75), transparent 70%),
-    radial-gradient(40px 40px at 82% 40%, rgba(255, 255, 255, 0.55), transparent 70%),
-    radial-gradient(54px 54px at 70% 18%, rgba(255, 255, 255, 0.5), transparent 75%),
-    radial-gradient(46px 46px at 40% 12%, rgba(255, 255, 255, 0.45), transparent 75%);
-  opacity: 0.7;
+    radial-gradient(64px 64px at 16% 72%, rgba(255, 255, 255, 0.7), transparent 72%),
+    radial-gradient(48px 48px at 84% 40%, rgba(255, 255, 255, 0.5), transparent 72%),
+    radial-gradient(58px 58px at 70% 16%, rgba(255, 255, 255, 0.45), transparent 76%),
+    radial-gradient(52px 52px at 40% 12%, rgba(255, 255, 255, 0.4), transparent 76%),
+    radial-gradient(46px 46px at 30% 36%, rgba(255, 255, 255, 0.35), transparent 75%);
+  opacity: 0.65;
   pointer-events: none;
 }
 
@@ -52,26 +53,30 @@
 }
 
 .brand {
+  font-family: var(--font-body);
   font-weight: 700;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.34em;
   color: var(--accent);
-  font-size: 0.9rem;
+  font-size: 0.98rem;
+  text-transform: uppercase;
 }
 
 .hero h1 {
-  margin: 16px 0 0;
-  font-weight: 600;
-  font-size: clamp(24px, 4.6vw, 32px);
-  line-height: 1.25;
+  margin: 18px 0 0;
+  font-family: var(--font-title);
+  font-weight: 500;
+  font-size: clamp(26px, 5vw, 34px);
+  line-height: 1.28;
+  letter-spacing: 0.01em;
   color: var(--text);
 }
 
 .choice-grid {
   width: min(320px, 100%);
-  margin-top: clamp(16px, 4vh, 26px);
+  margin-top: clamp(18px, 4.5vh, 28px);
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  gap: 16px;
   position: relative;
 }
 
@@ -79,27 +84,27 @@
   content: "";
   position: absolute;
   inset: -16% -8%;
-  background: radial-gradient(60% 50% at 50% 50%, rgba(241, 167, 92, 0.28), transparent 70%);
-  filter: blur(18px);
-  opacity: 0.6;
+  background: radial-gradient(60% 50% at 50% 50%, rgba(241, 167, 92, 0.24), transparent 70%);
+  filter: blur(20px);
+  opacity: 0.55;
   z-index: 0;
 }
 
 .choice-card {
   position: relative;
   z-index: 1;
-  border: 1px solid rgba(241, 224, 205, 0.95);
-  border-radius: 18px;
-  background: #fff9f3;
-  padding: 16px 12px 14px;
-  min-height: 132px;
+  border: 1px solid rgba(240, 225, 208, 0.95);
+  border-radius: 20px;
+  background: #fff9f4;
+  padding: 18px 12px 14px;
+  min-height: 140px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
   box-shadow:
-    0 18px 28px rgba(216, 150, 90, 0.25),
-    0 6px 10px rgba(116, 76, 42, 0.12);
+    0 20px 32px rgba(216, 150, 90, 0.26),
+    0 8px 12px rgba(116, 76, 42, 0.1);
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   animation: float-in 0.6s ease-out both;
 }
@@ -109,7 +114,7 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: radial-gradient(140px 100px at 25% 15%, rgba(255, 255, 255, 0.65), transparent 70%);
+  background: radial-gradient(140px 100px at 25% 15%, rgba(255, 255, 255, 0.7), transparent 70%);
   pointer-events: none;
 }
 
@@ -134,23 +139,26 @@
 }
 
 .choice-icon {
-  width: 58px;
-  height: 58px;
+  width: 60px;
+  height: 60px;
   display: grid;
   place-items: center;
   color: var(--accent);
+  margin-top: 4px;
 }
 
 .choice-icon svg {
-  width: 46px;
-  height: 46px;
+  width: 52px;
+  height: 52px;
   fill: currentColor;
 }
 
 .choice-label {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--accent);
+  margin-top: auto;
+  padding-bottom: 2px;
 }
 
 .choice-card[data-tone="neutral"] .choice-label {
@@ -164,48 +172,71 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   animation: fade-in 0.7s ease-out both;
   animation-delay: 0.32s;
 }
 
 .hint {
   margin: 0;
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   color: var(--muted);
 }
 
 .bottom-nav {
-  width: min(350px, 100%);
+  width: min(340px, 100%);
   padding: 10px 18px 12px;
-  border-radius: 20px;
-  background: linear-gradient(180deg, #4f4742 0%, #2e2a27 100%);
-  box-shadow: 0 18px 26px rgba(39, 30, 24, 0.45);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #4f4742 0%, #2c2926 100%);
+  box-shadow: 0 18px 26px rgba(39, 30, 24, 0.42);
+  position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 6px;
 }
 
+.bottom-nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
 .nav-item {
   border: none;
   background: transparent;
-  color: #bcb2a8;
+  color: #b7ada3;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
-  font-size: 0.68rem;
+  gap: 6px;
+  font-size: 0.7rem;
   letter-spacing: 0.02em;
+  position: relative;
 }
 
 .nav-item svg {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   fill: currentColor;
 }
 
 .nav-item.active {
   color: var(--accent);
+}
+
+.nav-item.active::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  right: 26px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px rgba(242, 154, 46, 0.6);
 }
 
 @media (max-width: 360px) {
@@ -215,12 +246,12 @@
 
   .choice-card {
     padding: 14px 10px 12px;
-    min-height: 124px;
+    min-height: 130px;
   }
 
   .choice-icon {
-    width: 54px;
-    height: 54px;
+    width: 56px;
+    height: 56px;
   }
 }
 

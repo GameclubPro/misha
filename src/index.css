@@ -1,11 +1,13 @@
 :root {
-  --bg: #f3d0a7;
-  --accent: #f09a33;
-  --accent-strong: #d9821f;
-  --text: #3a2a1f;
-  --muted: #a38b78;
+  --bg: #f3d6ba;
+  --accent: #f29a2e;
+  --accent-strong: #dd841e;
+  --text: #3a2a20;
+  --muted: #a99584;
+  --font-body: "Montserrat", sans-serif;
+  --font-title: "Playfair Display", serif;
 
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-body);
   line-height: 1.4;
   font-weight: 400;
   color: var(--text);

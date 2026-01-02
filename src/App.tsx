@@ -42,10 +42,10 @@ function App() {
               <path d="M22 16l10-6 10 6-10 6z" />
               <path d="M22 16v10l10 6V22z" opacity="0.9" />
               <path d="M42 16v10l-10 6V22z" opacity="0.7" />
-              <path d="M12 38c0-3.6 3-6.6 6.6-6.6H42c3.2 0 5.8 2.6 5.8 5.8V46H12z" opacity="0.85" />
-              <rect x="12" y="33" width="6" height="12" rx="2" opacity="0.9" />
+              <path d="M16 40c0-3.2 2.6-5.8 5.8-5.8H42c3 0 5.5 2.4 5.5 5.5V46H16z" opacity="0.9" />
+              <rect x="14" y="34" width="6" height="12" rx="2" opacity="0.9" />
               <path d="M44 35l8-4 4 3v7h-12z" opacity="0.6" />
-              <path d="M46 12l2.2-4 2.2 4-4.4-2z" opacity="0.8" />
+              <path d="M48 12l2.4-4 2.4 4-4.8-2z" opacity="0.8" />
             </svg>
           </span>
           <span className="choice-label">Я заказчик</span>
@@ -61,8 +61,8 @@ function App() {
           <span className="choice-icon" aria-hidden="true">
             <svg viewBox="0 0 64 64">
               <circle cx="32" cy="26" r="6" />
-              <path d="M14 30c0-9 7.5-16 18-16s18 7 18 16v5H14z" opacity="0.9" />
-              <rect x="16" y="34" width="32" height="7" rx="3.5" opacity="0.9" />
+              <path d="M16 30c0-8.5 7-15.5 16-15.5S48 21.5 48 30v4.5H16z" opacity="0.9" />
+              <rect x="18" y="34" width="28" height="7" rx="3.5" opacity="0.9" />
               <rect x="30" y="14" width="4" height="9" rx="2" opacity="0.85" />
               <path d="M22 44h20v10H22z" opacity="0.8" />
               <path d="M24 44l8 6 8-6" opacity="0.55" />

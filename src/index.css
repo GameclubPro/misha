@@ -1,13 +1,13 @@
 :root {
-  --bg: #0b0f14;
-  --surface: rgba(13, 21, 31, 0.72);
-  --surface-strong: rgba(18, 28, 42, 0.88);
-  --ink: #eff5ff;
-  --muted: #9fb0c4;
-  --accent: #1ed6a8;
-  --accent-strong: #56f5c8;
-  --accent-warm: #ff8f2b;
-  --stroke: rgba(255, 255, 255, 0.12);
+  --bg: #0b0a09;
+  --surface: rgba(18, 14, 12, 0.72);
+  --surface-strong: rgba(28, 20, 16, 0.88);
+  --ink: #f7efe7;
+  --muted: #b4a69a;
+  --accent: #ff8a2b;
+  --accent-strong: #ff7a00;
+  --accent-warm: #ffd2a1;
+  --stroke: rgba(255, 255, 255, 0.14);
   --tg-safe-top: env(safe-area-inset-top, 0px);
   --font-body: "Golos Text", "Manrope", sans-serif;
   --font-title: "Golos Display", "Golos Text", sans-serif;

@@ -39,12 +39,13 @@ function App() {
         >
           <span className="choice-icon" aria-hidden="true">
             <svg viewBox="0 0 64 64">
-              <path d="M20 16l12-7 12 7-12 7z" />
-              <path d="M20 16v12l12 7V23z" opacity="0.9" />
-              <path d="M44 16v12l-12 7V23z" opacity="0.7" />
-              <path d="M10 40c0-3.5 2.8-6.5 6.5-6.5H42c3.4 0 6 2.6 6 6v8.5H10z" opacity="0.85" />
-              <path d="M42 36l9-5 5 3v8H42z" opacity="0.6" />
-              <path d="M46 14l2-4 2 4-4-2z" opacity="0.8" />
+              <path d="M22 16l10-6 10 6-10 6z" />
+              <path d="M22 16v10l10 6V22z" opacity="0.9" />
+              <path d="M42 16v10l-10 6V22z" opacity="0.7" />
+              <path d="M12 38c0-3.6 3-6.6 6.6-6.6H42c3.2 0 5.8 2.6 5.8 5.8V46H12z" opacity="0.85" />
+              <rect x="12" y="33" width="6" height="12" rx="2" opacity="0.9" />
+              <path d="M44 35l8-4 4 3v7h-12z" opacity="0.6" />
+              <path d="M46 12l2.2-4 2.2 4-4.4-2z" opacity="0.8" />
             </svg>
           </span>
           <span className="choice-label">Я заказчик</span>
@@ -59,10 +60,11 @@ function App() {
         >
           <span className="choice-icon" aria-hidden="true">
             <svg viewBox="0 0 64 64">
-              <path d="M14 30c0-9.5 7.5-17 18-17s18 7.5 18 17v5H14z" opacity="0.9" />
-              <rect x="16" y="34" width="32" height="8" rx="4" opacity="0.9" />
-              <rect x="30" y="14" width="4" height="10" rx="2" opacity="0.85" />
-              <path d="M24 44h16v10H24z" opacity="0.8" />
+              <circle cx="32" cy="26" r="6" />
+              <path d="M14 30c0-9 7.5-16 18-16s18 7 18 16v5H14z" opacity="0.9" />
+              <rect x="16" y="34" width="32" height="7" rx="3.5" opacity="0.9" />
+              <rect x="30" y="14" width="4" height="9" rx="2" opacity="0.85" />
+              <path d="M22 44h20v10H22z" opacity="0.8" />
               <path d="M24 44l8 6 8-6" opacity="0.55" />
             </svg>
           </span>
@@ -75,20 +77,22 @@ function App() {
         <nav className="bottom-nav" aria-label="Основная навигация">
           <button className="nav-item active" type="button">
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 11.5 12 5l8 6.5v7.5a1 1 0 0 1-1 1h-5.5v-6h-3v6H5a1 1 0 0 1-1-1z" />
+              <path d="M3.5 11.5 12 5l8.5 6.5v7.5a1 1 0 0 1-1 1h-5.3v-6.2h-3.9v6.2H4.5a1 1 0 0 1-1-1z" />
             </svg>
             <span>Заявки</span>
           </button>
           <button className="nav-item" type="button">
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 7a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v5a4 4 0 0 1-4 4H9l-5 4v-4a4 4 0 0 1-4-4z" />
+              <path d="M4 7.5A4.5 4.5 0 0 1 8.5 3h7A4.5 4.5 0 0 1 20 7.5v4.8A4.5 4.5 0 0 1 15.5 17H9l-5 4v-4a4.5 4.5 0 0 1 0-9z" />
+              <rect x="7.5" y="8" width="9" height="1.8" rx="0.9" />
+              <rect x="7.5" y="11" width="6.5" height="1.8" rx="0.9" />
             </svg>
             <span>Чаты</span>
           </button>
           <button className="nav-item" type="button">
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 12.5a4.25 4.25 0 1 0-4.25-4.25A4.25 4.25 0 0 0 12 12.5z" />
-              <path d="M4.5 20a7.5 7.5 0 0 1 15 0z" />
+              <circle cx="12" cy="8.5" r="3.8" />
+              <path d="M4.4 20a7.6 7.6 0 0 1 15.2 0z" />
             </svg>
             <span>Профиль</span>
           </button>

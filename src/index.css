@@ -1,11 +1,11 @@
 :root {
-  --bg: #f4d7b6;
-  --accent: #d89a50;
-  --accent-strong: #c0833a;
-  --text: #3b2c23;
-  --muted: #a68f7a;
+  --bg: #f3d0a7;
+  --accent: #f09a33;
+  --accent-strong: #d9821f;
+  --text: #3a2a1f;
+  --muted: #a38b78;
 
-  font-family: "Manrope", sans-serif;
+  font-family: "Montserrat", sans-serif;
   line-height: 1.4;
   font-weight: 400;
   color: var(--text);

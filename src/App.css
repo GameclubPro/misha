@@ -449,6 +449,12 @@
   gap: 12px;
 }
 
+.form-step {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .form-row {
   display: grid;
   grid-template-columns: auto 1fr auto;

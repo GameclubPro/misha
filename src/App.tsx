@@ -66,7 +66,13 @@ function App() {
           <section className="customer-section" aria-label="Популярные услуги">
             <h2 className="section-title">Популярное сегодня</h2>
             <div className="popular-grid">
-              <button className="popular-card" data-tone="dark" type="button">
+              <button
+                className="popular-card"
+                data-tone="dark"
+                type="button"
+                aria-pressed={selectedCategory === "popular-electric"}
+                onClick={() => setSelectedCategory("popular-electric")}
+              >
                 <span className="popular-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24">
                     <path d="M13 2 4 13h6l-1 9 11-13h-6z" />
@@ -74,7 +80,13 @@ function App() {
                 </span>
                 <span>Электрика</span>
               </button>
-              <button className="popular-card" data-tone="accent" type="button">
+              <button
+                className="popular-card"
+                data-tone="accent"
+                type="button"
+                aria-pressed={selectedCategory === "popular-plumbing"}
+                onClick={() => setSelectedCategory("popular-plumbing")}
+              >
                 <span className="popular-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24">
                     <path d="M6 10h6l-2 10 8-12h-6l2-6z" />
@@ -82,7 +94,13 @@ function App() {
                 </span>
                 <span>Сантехника</span>
               </button>
-              <button className="popular-card" data-tone="charcoal" type="button">
+              <button
+                className="popular-card"
+                data-tone="charcoal"
+                type="button"
+                aria-pressed={selectedCategory === "popular-cleaning"}
+                onClick={() => setSelectedCategory("popular-cleaning")}
+              >
                 <span className="popular-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24">
                     <circle cx="8" cy="7" r="3" />
@@ -92,7 +110,13 @@ function App() {
                 </span>
                 <span>Уборка и клининг</span>
               </button>
-              <button className="popular-card" data-tone="sun" type="button">
+              <button
+                className="popular-card"
+                data-tone="sun"
+                type="button"
+                aria-pressed={selectedCategory === "popular-movers"}
+                onClick={() => setSelectedCategory("popular-movers")}
+              >
                 <span className="popular-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24">
                     <path d="M4 7h10l2 3h4v6h-3" />

@@ -132,7 +132,7 @@
   align-self: center;
   justify-self: center;
   text-align: center;
-  transform: translateY(calc(-1 * clamp(6px, 2vh, 14px)));
+  transform: translateY(calc(-1 * clamp(12px, 3vh, 22px)));
 }
 
 .hero-pill {

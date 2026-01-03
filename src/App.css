@@ -999,8 +999,8 @@
 }
 
 .choice-icon {
-  width: 48px;
-  height: 48px;
+  width: 72px;
+  height: 72px;
   display: grid;
   place-items: center;
   color: var(--card-accent);
@@ -1008,8 +1008,8 @@
 
 .choice-icon svg,
 .choice-icon img {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   object-fit: contain;
 }
 

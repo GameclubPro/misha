@@ -35,8 +35,7 @@
 
 .screen[data-screen="create"] {
   gap: 16px;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
   background: #ffffff;
 }
 

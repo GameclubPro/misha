@@ -48,6 +48,7 @@ function App() {
   const [role, setRole] = useState<Role | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [isCreating, setIsCreating] = useState(false);
+  const [createStep, setCreateStep] = useState<1 | 2>(1);
 
   const tg = useMemo(() => window.Telegram?.WebApp, []);
 
@@ -71,6 +72,7 @@ function App() {
     setRole(nextRole);
     setSelectedCategory(null);
     setIsCreating(false);
+    setCreateStep(1);
   };
 
   const isCustomer = role === "customer";
@@ -88,11 +90,21 @@ function App() {
   const handleCreate = () => {
     if (selectedCategory) {
       setIsCreating(true);
+      setCreateStep(1);
     }
   };
 
   const handleBack = () => {
+    if (isCreating && createStep > 1) {
+      setCreateStep(1);
+      return;
+    }
     setIsCreating(false);
+    setCreateStep(1);
+  };
+
+  const handleNextStep = () => {
+    setCreateStep(2);
   };
 
   return (
@@ -116,157 +128,174 @@ function App() {
             <section className="create-body" aria-label="Создание заявки">
               <h1 className="create-title">Создать заявку</h1>
               <div className="form-stack">
-                <button
-                  className="form-row form-row--category"
-                  type="button"
-                  onClick={handleBack}
-                >
-                  <span className="form-icon" aria-hidden="true">
-                    {selectedIcon ? (
-                      <img src={selectedIcon} alt="" />
-                    ) : (
-                      <svg viewBox="0 0 24 24">
-                        <path d="M3 12l7-7h7v7l-7 7-7-7z" />
-                        <circle cx="14" cy="7" r="1.6" />
-                      </svg>
-                    )}
-                  </span>
-                  <span className="form-row-text">
-                    <span className="form-row-title">{selectedLabel}</span>
-                    <span className="form-row-meta">{selectedMeta}</span>
-                  </span>
-                  <span className="form-chevron" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <path d="M9 6l6 6-6 6" />
-                    </svg>
-                  </span>
-                </button>
+                {createStep === 1 ? (
+                  <>
+                    <button
+                      className="form-row form-row--category"
+                      type="button"
+                      onClick={handleBack}
+                    >
+                      <span className="form-icon" aria-hidden="true">
+                        {selectedIcon ? (
+                          <img src={selectedIcon} alt="" />
+                        ) : (
+                          <svg viewBox="0 0 24 24">
+                            <path d="M3 12l7-7h7v7l-7 7-7-7z" />
+                            <circle cx="14" cy="7" r="1.6" />
+                          </svg>
+                        )}
+                      </span>
+                      <span className="form-row-text">
+                        <span className="form-row-title">{selectedLabel}</span>
+                        <span className="form-row-meta">{selectedMeta}</span>
+                      </span>
+                      <span className="form-chevron" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                          <path d="M9 6l6 6-6 6" />
+                        </svg>
+                      </span>
+                    </button>
 
-                <div className="form-card">
-                  <label className="form-field">
-                    <span className="form-field-title">Коротко</span>
-                    <input
-                      className="form-input"
-                      type="text"
-                      placeholder="Например: заменить смеситель"
-                      aria-label="Краткое описание"
-                    />
-                  </label>
-                  <label className="form-field">
-                    <span className="form-field-title">Подробнее</span>
-                    <textarea
-                      className="form-textarea"
-                      placeholder="Опишите задачу детальнее: что нужно, как срочно, есть ли фото..."
-                      aria-label="Описание задачи"
-                    />
-                  </label>
-                </div>
-
-                <button className="form-row form-row--ghost" type="button">
-                  <span className="form-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <rect x="4" y="7" width="16" height="12" rx="3" />
-                      <path d="M8 7l2-2h4l2 2" />
-                      <circle cx="12" cy="13" r="3" />
-                    </svg>
-                  </span>
-                  <span className="form-row-text">
-                    <span className="form-row-title">
-                      Добавить фото <span className="form-row-muted">(по желанию)</span>
-                    </span>
-                  </span>
-                  <span className="form-chevron" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <path d="M9 6l6 6-6 6" />
-                    </svg>
-                  </span>
-                </button>
-
-                <div className="form-section">
-                  <h2 className="form-section-title">Бюджет</h2>
-                  <div className="form-card form-card--tight">
-                    <div className="chip-row" role="group" aria-label="Тип бюджета">
-                      <button className="chip chip--active" type="button">
-                        До ₽
-                      </button>
-                      <button className="chip" type="button">
-                        Диапазон
-                      </button>
-                    </div>
-                    <div className="budget-inputs">
-                      <label className="budget-field">
-                        <span className="budget-currency">RUB</span>
-                        <input type="text" placeholder="от" aria-label="Бюджет от" />
+                    <div className="form-card">
+                      <label className="form-field">
+                        <span className="form-field-title">Коротко</span>
+                        <input
+                          className="form-input"
+                          type="text"
+                          placeholder="Например: заменить смеситель"
+                          aria-label="Краткое описание"
+                        />
                       </label>
-                      <label className="budget-field">
-                        <span className="budget-currency">RUB</span>
-                        <input type="text" placeholder="до" aria-label="Бюджет до" />
+                      <label className="form-field">
+                        <span className="form-field-title">Подробнее</span>
+                        <textarea
+                          className="form-textarea"
+                          placeholder="Опишите задачу детальнее: что нужно, как срочно, есть ли фото..."
+                          aria-label="Описание задачи"
+                        />
                       </label>
                     </div>
-                    <label className="form-check">
-                      <input type="checkbox" defaultChecked />
-                      <span>На месте договорюсь</span>
-                    </label>
-                  </div>
-                </div>
 
-                <div className="form-section">
-                  <h2 className="form-section-title">Где</h2>
-                  <button className="form-row" type="button">
-                    <span className="form-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24">
-                        <path d="M12 3c3.2 0 5.5 2.2 5.5 5.2 0 3.8-5.5 9.6-5.5 9.6S6.5 12 6.5 8.2C6.5 5.2 8.8 3 12 3z" />
-                        <circle cx="12" cy="8.4" r="2.2" />
-                      </svg>
-                    </span>
-                    <span className="form-row-text">
-                      <span className="form-row-title">Москва</span>
-                      <span className="form-row-sub">район или точный адрес (опц.)</span>
-                    </span>
-                    <span className="form-chevron" aria-hidden="true">
-                      <svg viewBox="0 0 24 24">
-                        <path d="M9 6l6 6-6 6" />
-                      </svg>
-                    </span>
-                  </button>
-                </div>
+                    <button className="form-row form-row--ghost" type="button">
+                      <span className="form-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                          <rect x="4" y="7" width="16" height="12" rx="3" />
+                          <path d="M8 7l2-2h4l2 2" />
+                          <circle cx="12" cy="13" r="3" />
+                        </svg>
+                      </span>
+                      <span className="form-row-text">
+                        <span className="form-row-title">
+                          Добавить фото <span className="form-row-muted">(по желанию)</span>
+                        </span>
+                      </span>
+                      <span className="form-chevron" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                          <path d="M9 6l6 6-6 6" />
+                        </svg>
+                      </span>
+                    </button>
 
-                <div className="form-section">
-                  <h2 className="form-section-title">Когда</h2>
-                  <div className="date-tabs" role="group" aria-label="Выбор даты">
-                    <button className="date-tab date-tab--active" type="button">
-                      Сегодня
-                    </button>
-                    <button className="date-tab" type="button">
-                      Завтра
-                    </button>
-                    <button className="date-tab" type="button">
-                      Выбрать дату/время
-                    </button>
-                  </div>
-                  <label className="form-check form-check--light">
-                    <input type="checkbox" defaultChecked />
-                    <span>Можно договориться</span>
-                  </label>
-                </div>
+                    <div className="submit-stack">
+                      <button
+                        className="cta-primary"
+                        type="button"
+                        data-active="true"
+                        onClick={handleNextStep}
+                      >
+                        Далее
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="form-section">
+                      <h2 className="form-section-title">Бюджет</h2>
+                      <div className="form-card form-card--tight">
+                        <div className="chip-row" role="group" aria-label="Тип бюджета">
+                          <button className="chip chip--active" type="button">
+                            До ₽
+                          </button>
+                          <button className="chip" type="button">
+                            Диапазон
+                          </button>
+                        </div>
+                        <div className="budget-inputs">
+                          <label className="budget-field">
+                            <span className="budget-currency">RUB</span>
+                            <input type="text" placeholder="от" aria-label="Бюджет от" />
+                          </label>
+                          <label className="budget-field">
+                            <span className="budget-currency">RUB</span>
+                            <input type="text" placeholder="до" aria-label="Бюджет до" />
+                          </label>
+                        </div>
+                        <label className="form-check">
+                          <input type="checkbox" defaultChecked />
+                          <span>На месте договорюсь</span>
+                        </label>
+                      </div>
+                    </div>
 
-                <div className="submit-stack">
-                  <button className="cta-primary" type="button" data-active="true">
-                    Опубликовать заявку
-                  </button>
-                  <button className="cta-secondary" type="button">
-                    <span className="cta-secondary-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24">
-                        <circle cx="11" cy="11" r="6.5" />
-                        <path d="M16 16l4.2 4.2" />
-                      </svg>
-                    </span>
-                    <span className="cta-secondary-text">
-                      <span className="cta-secondary-title">Найти исполнителя</span>
-                      <span className="cta-secondary-sub">Выбрать из списка</span>
-                    </span>
-                  </button>
-                </div>
+                    <div className="form-section">
+                      <h2 className="form-section-title">Где</h2>
+                      <button className="form-row" type="button">
+                        <span className="form-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24">
+                            <path d="M12 3c3.2 0 5.5 2.2 5.5 5.2 0 3.8-5.5 9.6-5.5 9.6S6.5 12 6.5 8.2C6.5 5.2 8.8 3 12 3z" />
+                            <circle cx="12" cy="8.4" r="2.2" />
+                          </svg>
+                        </span>
+                        <span className="form-row-text">
+                          <span className="form-row-title">Москва</span>
+                          <span className="form-row-sub">район или точный адрес (опц.)</span>
+                        </span>
+                        <span className="form-chevron" aria-hidden="true">
+                          <svg viewBox="0 0 24 24">
+                            <path d="M9 6l6 6-6 6" />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+
+                    <div className="form-section">
+                      <h2 className="form-section-title">Когда</h2>
+                      <div className="date-tabs" role="group" aria-label="Выбор даты">
+                        <button className="date-tab date-tab--active" type="button">
+                          Сегодня
+                        </button>
+                        <button className="date-tab" type="button">
+                          Завтра
+                        </button>
+                        <button className="date-tab" type="button">
+                          Выбрать дату/время
+                        </button>
+                      </div>
+                      <label className="form-check form-check--light">
+                        <input type="checkbox" defaultChecked />
+                        <span>Можно договориться</span>
+                      </label>
+                    </div>
+
+                    <div className="submit-stack">
+                      <button className="cta-primary" type="button" data-active="true">
+                        Опубликовать заявку
+                      </button>
+                      <button className="cta-secondary" type="button">
+                        <span className="cta-secondary-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="6.5" />
+                            <path d="M16 16l4.2 4.2" />
+                          </svg>
+                        </span>
+                        <span className="cta-secondary-text">
+                          <span className="cta-secondary-title">Найти исполнителя</span>
+                          <span className="cta-secondary-sub">Выбрать из списка</span>
+                        </span>
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
             </section>
           </>

@@ -329,8 +329,8 @@
 
 .popular-icon svg,
 .popular-icon img {
-  width: 22px;
-  height: 22px;
+  width: 60px;
+  height: 60px;
   object-fit: contain;
 }
 
@@ -376,8 +376,8 @@
 }
 
 .category-icon {
-  width: 28px;
-  height: 28px;
+  width: 60px;
+  height: 60px;
   display: grid;
   place-items: center;
   color: var(--accent);
@@ -385,8 +385,8 @@
 
 .category-icon svg,
 .category-icon img {
-  width: 24px;
-  height: 24px;
+  width: 60px;
+  height: 60px;
   object-fit: contain;
 }
 
@@ -563,8 +563,8 @@
 }
 
 .form-icon {
-  width: 36px;
-  height: 36px;
+  width: 60px;
+  height: 60px;
   border-radius: 12px;
   display: grid;
   place-items: center;
@@ -574,8 +574,8 @@
 
 .form-icon svg,
 .form-icon img {
-  width: 18px;
-  height: 18px;
+  width: 60px;
+  height: 60px;
   object-fit: contain;
 }
 
@@ -1110,8 +1110,8 @@
 
 .nav-item svg,
 .nav-item img {
-  width: 20px;
-  height: 20px;
+  width: 60px;
+  height: 60px;
   object-fit: contain;
 }
 

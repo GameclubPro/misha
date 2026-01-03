@@ -229,18 +229,12 @@ function App() {
               <div className="choice-top">
                 <span className="choice-icon" aria-hidden="true">
                   <svg viewBox="0 0 64 64">
-                    <rect x="14" y="12" width="36" height="40" rx="10" opacity="0.22" />
-                    <rect x="18" y="16" width="28" height="32" rx="8" opacity="0.7" />
-                    <rect x="24" y="12" width="16" height="8" rx="4" opacity="0.55" />
                     <path
-                      d="M26 34l6 6 12-12"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      opacity="0.95"
+                      d="M8 32c7.5-10.8 17.8-16.2 24-16.2S48.5 21.2 56 32c-7.5 10.8-17.8 16.2-24 16.2S15.5 42.8 8 32z"
+                      opacity="0.75"
                     />
+                    <circle cx="32" cy="32" r="9" opacity="0.35" />
+                    <circle cx="32" cy="32" r="3.5" opacity="0.95" />
                   </svg>
                 </span>
                 <span className="choice-tag">Контроль</span>
@@ -260,9 +254,17 @@ function App() {
               <div className="choice-top">
                 <span className="choice-icon" aria-hidden="true">
                   <svg viewBox="0 0 64 64">
-                    <path d="M32 10l18 10v20L32 54 14 40V20z" opacity="0.9" />
-                    <path d="M32 16l14 8v16l-14 8-14-8V24z" opacity="0.25" />
-                    <path d="M30 18l-8 16h10l-6 18 16-20H32l6-14z" opacity="0.75" />
+                    <rect x="12" y="24" width="40" height="26" rx="8" opacity="0.85" />
+                    <rect x="22" y="16" width="20" height="10" rx="5" opacity="0.45" />
+                    <rect x="30" y="30" width="4" height="8" rx="2" opacity="0.95" />
+                    <path
+                      d="M16 34h32"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      opacity="0.35"
+                    />
                   </svg>
                 </span>
                 <span className="choice-tag">Доход</span>

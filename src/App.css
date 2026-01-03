@@ -340,10 +340,17 @@
   --tone: rgba(255, 213, 170, 0.35);
 }
 
+.popular-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+}
+
 .popular-icon svg,
 .popular-icon img {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
 }
 
@@ -394,8 +401,8 @@
 }
 
 .category-icon {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   display: grid;
   place-items: center;
   color: var(--accent);
@@ -403,8 +410,8 @@
 
 .category-icon svg,
 .category-icon img {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
 }
 

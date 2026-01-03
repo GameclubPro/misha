@@ -1,5 +1,18 @@
 import { useEffect, useMemo, useState } from "react";
 import "./App.css";
+import electricalIcon from "./assets/icons/electrical.webp";
+import plumbingIcon from "./assets/icons/plumbing.webp";
+import cleaningIcon from "./assets/icons/cleaning.webp";
+import moversIcon from "./assets/icons/movers.webp";
+import homeIcon from "./assets/icons/home.webp";
+import furnitureIcon from "./assets/icons/furniture.webp";
+import techIcon from "./assets/icons/tech.webp";
+import autoServicesIcon from "./assets/icons/auto-services.webp";
+import couriersIcon from "./assets/icons/couriers.webp";
+import deliveryIcon from "./assets/icons/delivery.webp";
+import requestsIcon from "./assets/icons/requests.webp";
+import chatsIcon from "./assets/icons/chats.webp";
+import profileIcon from "./assets/icons/profile.webp";
 
 type Role = "customer" | "executor";
 
@@ -14,6 +27,19 @@ const CATEGORY_LABELS: Record<string, string> = {
   "popular-plumbing": "Сантехника",
   "popular-cleaning": "Уборка и клининг",
   "popular-movers": "Грузчики",
+};
+
+const CATEGORY_ICONS: Record<string, string> = {
+  home: homeIcon,
+  furniture: furnitureIcon,
+  tech: techIcon,
+  auto: autoServicesIcon,
+  courier: couriersIcon,
+  delivery: deliveryIcon,
+  "popular-electric": electricalIcon,
+  "popular-plumbing": plumbingIcon,
+  "popular-cleaning": cleaningIcon,
+  "popular-movers": moversIcon,
 };
 
 function App() {
@@ -55,6 +81,7 @@ function App() {
   const selectedMeta = selectedCategory?.startsWith("popular")
     ? "Популярное сегодня"
     : "Категория";
+  const selectedIcon = selectedCategory ? CATEGORY_ICONS[selectedCategory] : null;
 
   const handleCreate = () => {
     if (selectedCategory) {
@@ -93,10 +120,14 @@ function App() {
                   onClick={handleBack}
                 >
                   <span className="form-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <path d="M3 12l7-7h7v7l-7 7-7-7z" />
-                      <circle cx="14" cy="7" r="1.6" />
-                    </svg>
+                    {selectedIcon ? (
+                      <img src={selectedIcon} alt="" />
+                    ) : (
+                      <svg viewBox="0 0 24 24">
+                        <path d="M3 12l7-7h7v7l-7 7-7-7z" />
+                        <circle cx="14" cy="7" r="1.6" />
+                      </svg>
+                    )}
                   </span>
                   <span className="form-row-text">
                     <span className="form-row-title">{selectedLabel}</span>
@@ -276,9 +307,7 @@ function App() {
                   onClick={() => setSelectedCategory("popular-electric")}
                 >
                   <span className="popular-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <path d="M13 2 4 13h6l-1 9 11-13h-6z" />
-                    </svg>
+                    <img src={CATEGORY_ICONS["popular-electric"]} alt="" />
                   </span>
                   <span>Электрика</span>
                 </button>
@@ -290,9 +319,7 @@ function App() {
                   onClick={() => setSelectedCategory("popular-plumbing")}
                 >
                   <span className="popular-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <path d="M6 10h6l-2 10 8-12h-6l2-6z" />
-                    </svg>
+                    <img src={CATEGORY_ICONS["popular-plumbing"]} alt="" />
                   </span>
                   <span>Сантехника</span>
                 </button>
@@ -304,11 +331,7 @@ function App() {
                   onClick={() => setSelectedCategory("popular-cleaning")}
                 >
                   <span className="popular-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <circle cx="8" cy="7" r="3" />
-                      <path d="M3 20c0-4 3-6 6-6s6 2 6 6" />
-                      <path d="M16 12l5 5" />
-                    </svg>
+                    <img src={CATEGORY_ICONS["popular-cleaning"]} alt="" />
                   </span>
                   <span>Уборка и клининг</span>
                 </button>
@@ -320,12 +343,7 @@ function App() {
                   onClick={() => setSelectedCategory("popular-movers")}
                 >
                   <span className="popular-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <path d="M4 7h10l2 3h4v6h-3" />
-                      <rect x="3" y="10" width="9" height="6" rx="1.5" />
-                      <circle cx="7" cy="17" r="2" />
-                      <circle cx="16" cy="17" r="2" />
-                    </svg>
+                    <img src={CATEGORY_ICONS["popular-movers"]} alt="" />
                   </span>
                   <span>Грузчики</span>
                 </button>
@@ -342,11 +360,7 @@ function App() {
                   onClick={() => setSelectedCategory("home")}
                 >
                   <span className="category-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <path d="M3 12l9-7 9 7" />
-                      <path d="M5 10v9h14v-9" />
-                      <path d="M9 19v-6h6v6" />
-                    </svg>
+                    <img src={CATEGORY_ICONS.home} alt="" />
                   </span>
                   <span>Дом и ремонт</span>
                   <span className="category-arrow" aria-hidden="true">
@@ -362,11 +376,7 @@ function App() {
                   onClick={() => setSelectedCategory("furniture")}
                 >
                   <span className="category-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <rect x="3" y="11" width="18" height="8" rx="2" />
-                      <path d="M6 11V8a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v3" />
-                      <path d="M8 19v-3h8v3" />
-                    </svg>
+                    <img src={CATEGORY_ICONS.furniture} alt="" />
                   </span>
                   <span>Мебель и интерьер</span>
                   <span className="category-arrow" aria-hidden="true">
@@ -382,11 +392,7 @@ function App() {
                   onClick={() => setSelectedCategory("tech")}
                 >
                   <span className="category-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <rect x="4" y="6" width="16" height="12" rx="2" />
-                      <path d="M9 18v2h6v-2" />
-                      <path d="M8 9h8" />
-                    </svg>
+                    <img src={CATEGORY_ICONS.tech} alt="" />
                   </span>
                   <span>Техника и гаджеты</span>
                   <span className="category-arrow" aria-hidden="true">
@@ -402,12 +408,7 @@ function App() {
                   onClick={() => setSelectedCategory("auto")}
                 >
                   <span className="category-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <path d="M5 14l2-6h8l2 6" />
-                      <rect x="3" y="12" width="18" height="6" rx="2" />
-                      <circle cx="8" cy="18" r="1.6" />
-                      <circle cx="16" cy="18" r="1.6" />
-                    </svg>
+                    <img src={CATEGORY_ICONS.auto} alt="" />
                   </span>
                   <span>Автоуслуги</span>
                   <span className="category-arrow" aria-hidden="true">
@@ -423,12 +424,7 @@ function App() {
                   onClick={() => setSelectedCategory("courier")}
                 >
                   <span className="category-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <circle cx="8" cy="7" r="3" />
-                      <path d="M3 20c0-4 3-6 6-6s6 2 6 6" />
-                      <path d="M16 8h5" />
-                      <path d="M16 12h5" />
-                    </svg>
+                    <img src={CATEGORY_ICONS.courier} alt="" />
                   </span>
                   <span>Курьеры</span>
                   <span className="category-arrow" aria-hidden="true">
@@ -444,11 +440,7 @@ function App() {
                   onClick={() => setSelectedCategory("delivery")}
                 >
                   <span className="category-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <path d="M4 7h10l4 4v8H4z" />
-                      <path d="M14 7v4h4" />
-                      <path d="M7 14h8" />
-                    </svg>
+                    <img src={CATEGORY_ICONS.delivery} alt="" />
                   </span>
                   <span>Доставка</span>
                   <span className="category-arrow" aria-hidden="true">
@@ -544,27 +536,15 @@ function App() {
       <footer className="footer">
         <nav className="bottom-nav" aria-label="Основная навигация">
           <button className="nav-item active" type="button">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="4" y="3.5" width="16" height="17" rx="3" />
-              <path d="M8 8h8" />
-              <path d="M8 12h8" />
-              <path d="M8 15.5h5" />
-            </svg>
+            <img src={requestsIcon} alt="" aria-hidden="true" />
             <span>Заявки</span>
           </button>
           <button className="nav-item" type="button">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M5 7.5A4.5 4.5 0 0 1 9.5 3h5A4.5 4.5 0 0 1 19 7.5v3a4.5 4.5 0 0 1-4.5 4.5H9l-4 4v-4A4.5 4.5 0 0 1 5 7.5z" />
-              <path d="M8.5 8.5h7" />
-              <path d="M8.5 11.5h4.5" />
-            </svg>
+            <img src={chatsIcon} alt="" aria-hidden="true" />
             <span>Чаты</span>
           </button>
           <button className="nav-item" type="button">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="8" r="3.5" />
-              <path d="M4 20c1.6-4 5.6-6 8-6s6.4 2 8 6" />
-            </svg>
+            <img src={profileIcon} alt="" aria-hidden="true" />
             <span>Профиль</span>
           </button>
         </nav>

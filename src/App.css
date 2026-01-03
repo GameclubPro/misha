@@ -327,9 +327,14 @@
   --tone: rgba(255, 213, 170, 0.35);
 }
 
-.popular-icon svg {
+.popular-icon svg,
+.popular-icon img {
   width: 22px;
   height: 22px;
+  object-fit: contain;
+}
+
+.popular-icon svg {
   stroke: currentColor;
   fill: none;
   stroke-width: 1.8;
@@ -378,9 +383,14 @@
   color: var(--accent);
 }
 
-.category-icon svg {
+.category-icon svg,
+.category-icon img {
   width: 24px;
   height: 24px;
+  object-fit: contain;
+}
+
+.category-icon svg {
   stroke: currentColor;
   fill: none;
   stroke-width: 1.8;
@@ -562,9 +572,14 @@
   color: var(--accent);
 }
 
-.form-icon svg {
+.form-icon svg,
+.form-icon img {
   width: 18px;
   height: 18px;
+  object-fit: contain;
+}
+
+.form-icon svg {
   stroke: currentColor;
   fill: none;
   stroke-width: 2;
@@ -1093,9 +1108,14 @@
   position: relative;
 }
 
-.nav-item svg {
+.nav-item svg,
+.nav-item img {
   width: 20px;
   height: 20px;
+  object-fit: contain;
+}
+
+.nav-item svg {
   stroke: currentColor;
   fill: none;
   stroke-width: 1.8;

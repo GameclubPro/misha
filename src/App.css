@@ -9,10 +9,11 @@
 
 .screen {
   --screen-pad-bottom: clamp(16px, 4vh, 22px);
+  --nav-height: 82px;
   width: min(420px, 100%);
   min-height: 100svh;
   padding: clamp(24px, 6vh, 46px) clamp(20px, 5vw, 32px)
-    var(--screen-pad-bottom);
+    calc(var(--screen-pad-bottom) + var(--nav-height) + env(safe-area-inset-bottom, 0px));
   padding-top: calc(clamp(24px, 6vh, 46px) + var(--tg-safe-top, 0px));
   display: flex;
   flex-direction: column;
@@ -1055,20 +1056,20 @@
 }
 
 .footer {
-  width: 100%;
-  margin-top: auto;
-  margin-bottom: calc(-1 * var(--screen-pad-bottom));
-  padding-bottom: calc(var(--screen-pad-bottom) + env(safe-area-inset-bottom, 0px));
-  padding-top: 10px;
+  width: min(420px, 100%);
+  margin: 0;
+  padding: 10px clamp(20px, 5vw, 32px) env(safe-area-inset-bottom, 0px);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
   animation: fade-up 0.7s ease-out both;
   animation-delay: 0.28s;
-  position: sticky;
+  position: fixed;
+  left: 50%;
   bottom: 0;
-  z-index: 3;
+  transform: translateX(-50%);
+  z-index: 10;
   isolation: isolate;
 }
 
@@ -1185,7 +1186,7 @@
 
 @media (max-width: 360px) {
   .screen {
-    padding: 20px 16px 16px;
+    padding: 20px 16px calc(16px + var(--nav-height) + env(safe-area-inset-bottom, 0px));
     padding-top: calc(20px + var(--tg-safe-top, 0px));
   }
 

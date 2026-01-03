@@ -18,6 +18,19 @@ import executorRoleImage from "./assets/roles/executor.webp";
 
 type Role = "customer" | "executor";
 
+const CATEGORY_LABELS: Record<string, string> = {
+  home: "Дом и ремонт",
+  furniture: "Мебель и интерьер",
+  tech: "Техника и гаджеты",
+  auto: "Автоуслуги",
+  courier: "Курьеры",
+  delivery: "Доставка",
+  "popular-electric": "Электрика",
+  "popular-plumbing": "Сантехника",
+  "popular-cleaning": "Уборка и клининг",
+  "popular-movers": "Грузчики",
+};
+
 const CATEGORY_ICONS: Record<string, string> = {
   home: homeIcon,
   furniture: furnitureIcon,
@@ -66,6 +79,13 @@ function App() {
   const isExecutor = role === "executor";
   const hasCategory = Boolean(selectedCategory);
   const isCreatingScreen = isCustomer && isCreating;
+  const selectedLabel = selectedCategory
+    ? CATEGORY_LABELS[selectedCategory] ?? "Категория"
+    : "Категория";
+  const selectedMeta = selectedCategory?.startsWith("popular")
+    ? "Популярное сегодня"
+    : "Категория";
+  const selectedIcon = selectedCategory ? CATEGORY_ICONS[selectedCategory] : null;
 
   const handleCreate = () => {
     if (selectedCategory) {
@@ -109,6 +129,32 @@ function App() {
               <h1 className="create-title">Создать заявку</h1>
               <div className="form-stack">
                 <div className="form-step" data-step="1" hidden={createStep !== 1}>
+                  <button
+                    className="form-row form-row--category"
+                    type="button"
+                    onClick={handleBack}
+                  >
+                    <span className="form-icon" aria-hidden="true">
+                      {selectedIcon ? (
+                        <img src={selectedIcon} alt="" />
+                      ) : (
+                        <svg viewBox="0 0 24 24">
+                          <path d="M3 12l7-7h7v7l-7 7-7-7z" />
+                          <circle cx="14" cy="7" r="1.6" />
+                        </svg>
+                      )}
+                    </span>
+                    <span className="form-row-text">
+                      <span className="form-row-title">{selectedLabel}</span>
+                      <span className="form-row-meta">{selectedMeta}</span>
+                    </span>
+                    <span className="form-chevron" aria-hidden="true">
+                      <svg viewBox="0 0 24 24">
+                        <path d="M9 6l6 6-6 6" />
+                      </svg>
+                    </span>
+                  </button>
+
                   <div className="form-card">
                     <label className="form-field">
                       <span className="form-field-title">Коротко</span>

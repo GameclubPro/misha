@@ -5,6 +5,7 @@ type Role = "customer" | "executor";
 
 function App() {
   const [role, setRole] = useState<Role | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   const tg = useMemo(() => window.Telegram?.WebApp, []);
 
@@ -30,6 +31,7 @@ function App() {
 
   const isCustomer = role === "customer";
   const isExecutor = role === "executor";
+  const hasCategory = Boolean(selectedCategory);
 
   return (
     <div className="screen" data-screen={isCustomer ? "customer" : "select"}>
@@ -107,7 +109,12 @@ function App() {
           <section className="customer-section" aria-label="Категории">
             <h2 className="section-title">Категории</h2>
             <div className="category-grid">
-              <button className="category-card" type="button">
+              <button
+                className="category-card"
+                type="button"
+                aria-pressed={selectedCategory === "home"}
+                onClick={() => setSelectedCategory("home")}
+              >
                 <span className="category-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24">
                     <path d="M3 12l9-7 9 7" />
@@ -122,7 +129,12 @@ function App() {
                   </svg>
                 </span>
               </button>
-              <button className="category-card" type="button">
+              <button
+                className="category-card"
+                type="button"
+                aria-pressed={selectedCategory === "furniture"}
+                onClick={() => setSelectedCategory("furniture")}
+              >
                 <span className="category-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24">
                     <rect x="3" y="11" width="18" height="8" rx="2" />
@@ -137,7 +149,12 @@ function App() {
                   </svg>
                 </span>
               </button>
-              <button className="category-card" type="button">
+              <button
+                className="category-card"
+                type="button"
+                aria-pressed={selectedCategory === "tech"}
+                onClick={() => setSelectedCategory("tech")}
+              >
                 <span className="category-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24">
                     <rect x="4" y="6" width="16" height="12" rx="2" />
@@ -152,7 +169,12 @@ function App() {
                   </svg>
                 </span>
               </button>
-              <button className="category-card" type="button">
+              <button
+                className="category-card"
+                type="button"
+                aria-pressed={selectedCategory === "auto"}
+                onClick={() => setSelectedCategory("auto")}
+              >
                 <span className="category-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24">
                     <path d="M5 14l2-6h8l2 6" />
@@ -168,7 +190,12 @@ function App() {
                   </svg>
                 </span>
               </button>
-              <button className="category-card" type="button">
+              <button
+                className="category-card"
+                type="button"
+                aria-pressed={selectedCategory === "courier"}
+                onClick={() => setSelectedCategory("courier")}
+              >
                 <span className="category-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24">
                     <circle cx="8" cy="7" r="3" />
@@ -184,7 +211,12 @@ function App() {
                   </svg>
                 </span>
               </button>
-              <button className="category-card" type="button">
+              <button
+                className="category-card"
+                type="button"
+                aria-pressed={selectedCategory === "delivery"}
+                onClick={() => setSelectedCategory("delivery")}
+              >
                 <span className="category-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24">
                     <path d="M4 7h10l4 4v8H4z" />
@@ -203,7 +235,7 @@ function App() {
           </section>
 
           <div className="cta-wrap">
-            <button className="cta-primary" type="button">
+            <button className="cta-primary" type="button" data-active={hasCategory}>
               Создать заявку
             </button>
           </div>

@@ -13,6 +13,8 @@ import deliveryIcon from "./assets/icons/delivery.webp";
 import requestsIcon from "./assets/icons/requests.webp";
 import chatsIcon from "./assets/icons/chats.webp";
 import profileIcon from "./assets/icons/profile.webp";
+import customerRoleImage from "./assets/roles/customer.webp";
+import executorRoleImage from "./assets/roles/executor.webp";
 
 type Role = "customer" | "executor";
 
@@ -484,14 +486,7 @@ function App() {
             >
               <div className="choice-top">
                 <span className="choice-icon" aria-hidden="true">
-                  <svg viewBox="0 0 64 64">
-                    <path
-                      d="M8 32c7.5-10.8 17.8-16.2 24-16.2S48.5 21.2 56 32c-7.5 10.8-17.8 16.2-24 16.2S15.5 42.8 8 32z"
-                      opacity="0.75"
-                    />
-                    <circle cx="32" cy="32" r="9" opacity="0.35" />
-                    <circle cx="32" cy="32" r="3.5" opacity="0.95" />
-                  </svg>
+                  <img src={customerRoleImage} alt="" />
                 </span>
                 <span className="choice-tag">Контроль</span>
               </div>
@@ -509,19 +504,7 @@ function App() {
             >
               <div className="choice-top">
                 <span className="choice-icon" aria-hidden="true">
-                  <svg viewBox="0 0 64 64">
-                    <rect x="12" y="24" width="40" height="26" rx="8" opacity="0.85" />
-                    <rect x="22" y="16" width="20" height="10" rx="5" opacity="0.45" />
-                    <rect x="30" y="30" width="4" height="8" rx="2" opacity="0.95" />
-                    <path
-                      d="M16 34h32"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      opacity="0.35"
-                    />
-                  </svg>
+                  <img src={executorRoleImage} alt="" />
                 </span>
                 <span className="choice-tag">Доход</span>
               </div>

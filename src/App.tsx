@@ -26,7 +26,6 @@ function App() {
 
   const handleSelect = (nextRole: Role) => {
     setRole(nextRole);
-    tg?.sendData(JSON.stringify({ action: "role", role: nextRole, ts: Date.now() }));
   };
 
   const isCustomer = role === "customer";

@@ -130,6 +130,9 @@
 
 .brand-center {
   align-self: center;
+  justify-self: center;
+  text-align: center;
+  transform: translateY(calc(-1 * clamp(6px, 2vh, 14px)));
 }
 
 .hero-pill {
@@ -1165,7 +1168,7 @@
 .nav-item.active {
   color: #fff7f0;
   background: linear-gradient(150deg, rgba(255, 122, 0, 0.25), rgba(255, 122, 0, 0.05));
-  box-shadow: 0 8px 14px rgba(255, 122, 0, 0.18);
+  box-shadow: none;
 }
 
 .nav-item.active::after {
@@ -1177,7 +1180,7 @@
   height: 6px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 10px rgba(255, 122, 0, 0.7);
+  box-shadow: none;
 }
 
 .nav-item:active {

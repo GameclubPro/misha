@@ -335,6 +335,15 @@
   --tone: rgba(255, 213, 170, 0.35);
 }
 
+.popular-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: rgba(21, 14, 11, 0.92);
+}
+
 .popular-icon svg,
 .popular-icon img {
   width: 40px;
@@ -389,6 +398,8 @@
   display: grid;
   place-items: center;
   color: var(--accent);
+  border-radius: 12px;
+  background: rgba(21, 14, 11, 0.92);
 }
 
 .category-icon svg,

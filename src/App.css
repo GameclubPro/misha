@@ -8,13 +8,15 @@
 }
 
 .screen {
+  --screen-pad-top: clamp(24px, 6vh, 46px);
+  --screen-pad-x: clamp(20px, 5vw, 32px);
   --screen-pad-bottom: clamp(16px, 4vh, 22px);
   --nav-height: 74px;
   width: min(420px, 100%);
   min-height: 100svh;
-  padding: clamp(24px, 6vh, 46px) clamp(20px, 5vw, 32px)
+  padding: var(--screen-pad-top) var(--screen-pad-x)
     calc(var(--screen-pad-bottom) + var(--nav-height) + env(safe-area-inset-bottom, 0px));
-  padding-top: calc(clamp(24px, 6vh, 46px) + var(--tg-safe-top, 0px));
+  padding-top: calc(var(--screen-pad-top) + var(--tg-safe-top, 0px));
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -132,7 +134,7 @@
   align-self: center;
   justify-self: center;
   text-align: center;
-  transform: translateY(calc(-1 * clamp(12px, 3vh, 22px)));
+  transform: translateY(calc(-1 * (var(--screen-pad-top) - clamp(6px, 1.5vh, 12px))));
 }
 
 .hero-pill {
@@ -1189,8 +1191,9 @@
 
 @media (max-width: 360px) {
   .screen {
-    padding: 20px 16px calc(16px + var(--nav-height) + env(safe-area-inset-bottom, 0px));
-    padding-top: calc(20px + var(--tg-safe-top, 0px));
+    --screen-pad-top: 20px;
+    --screen-pad-x: 16px;
+    --screen-pad-bottom: 16px;
   }
 
   .brand {
